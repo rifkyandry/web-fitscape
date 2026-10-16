@@ -49,7 +49,7 @@ class ScanController extends Controller
         $isValid = $google2fa->verifyKey(
         $user->totp_secret, 
         $otpCode,
-        4  // toleransi 2 window = ±60 detik
+        1  //1 window = ±30 detik untuk mengantisipasi delay pemindaian
         );
         if (!$isValid) {
             return response()->json([
