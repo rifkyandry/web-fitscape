@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
  $this->call([
         MembershipPackageSeeder::class,
          AdminSeeder::class,
+          SiteSettingSeeder::class,
+          MemberSeeder::class,
+
     ]);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
