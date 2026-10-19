@@ -981,7 +981,7 @@
             </a>
 
             {{-- Instagram --}}
-            <a class="contact-card" href="https://instagram.com/{{ \App\Models\SiteSetting::get('gym_instagram', 'fitscapestudio') }}" target="_blank"
+            <a class="contact-card" href="https://www.instagram.com/fitscape_fitness_studio?utm_source=ig_web_button_share_sheet&exln=ZDNlZDc0MzIxNw==/{{ \App\Models\SiteSetting::get('gym_instagram', 'fitscapestudio') }}" target="_blank"
                style="display:flex; align-items:center; gap:14px; background:var(--dark3); border:1px solid var(--border); border-radius:12px; padding:14px 18px; text-decoration:none; transition:border-color 0.2s;"
                onmouseover="this.style.borderColor='#E1306C'" onmouseout="this.style.borderColor='var(--border)'">
                 <span style="font-size:22px; width:28px; text-align:center; color:#E1306C; flex-shrink:0;"><i class="fa-brands fa-instagram"></i></span>
@@ -992,7 +992,7 @@
             </a>
 
             {{-- Facebook --}}
-            <a class="contact-card" href="{{ \App\Models\SiteSetting::get('gym_facebook', 'https://facebook.com/fitscapestudio') }}" target="_blank"
+            <a class="contact-card" href="{{ \App\Models\SiteSetting::get('gym_facebook', 'https://www.facebook.com/140705662450630?ref=NONE_xav_ig_profile_page_web') }}" target="_blank"
                style="display:flex; align-items:center; gap:14px; background:var(--dark3); border:1px solid var(--border); border-radius:12px; padding:14px 18px; text-decoration:none; transition:border-color 0.2s;"
                onmouseover="this.style.borderColor='#1877F2'" onmouseout="this.style.borderColor='var(--border)'">
                 <span style="font-size:22px; width:28px; text-align:center; color:#1877F2; flex-shrink:0;"><i class="fa-brands fa-facebook"></i></span>
