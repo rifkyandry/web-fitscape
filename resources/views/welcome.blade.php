@@ -969,16 +969,25 @@
         </div>
 
         <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
-            {{-- WhatsApp --}}
-            <a class="contact-card" href="https://wa.me/{{ \App\Models\SiteSetting::get('gym_phone', '628XXXXXXXXXX') }}" target="_blank"
-               style="display:flex; align-items:center; gap:14px; background:var(--dark3); border:1px solid var(--border); border-radius:12px; padding:14px 18px; text-decoration:none; transition:border-color 0.2s;"
-               onmouseover="this.style.borderColor='#25D366'" onmouseout="this.style.borderColor='var(--border)'">
-                <span style="font-size:22px; width:28px; text-align:center; color:#25D366; flex-shrink:0;"><i class="fa-brands fa-whatsapp"></i></span>
-                <div>
-                    <div style="font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; color:var(--dim); text-transform:uppercase; margin-bottom:2px;">WhatsApp</div>
-                    <div style="font-size:13px; color:var(--white); font-weight:600;">+{{ \App\Models\SiteSetting::get('gym_phone', '628XXXXXXXXXX') }}</div>
-                </div>
-            </a>
+           
+        {{-- WhatsApp --}}
+@php
+    // wa.me hanya menerima angka: buang spasi, strip, tanda +, dll.
+    $waNumber = preg_replace('/\D/', '', \App\Models\SiteSetting::get('gym_phone', '628XXXXXXXXXX'));
+    // Kalau diawali 0 (mis. 0853...), ubah ke kode negara 62
+    if (str_starts_with($waNumber, '0')) {
+        $waNumber = '62' . substr($waNumber, 1);
+    }
+@endphp
+<a class="contact-card" href="https://wa.me/{{ $waNumber }}" target="_blank" rel="noopener"
+   style="display:flex; align-items:center; gap:14px; background:var(--dark3); border:1px solid var(--border); border-radius:12px; padding:14px 18px; text-decoration:none; transition:border-color 0.2s;"
+   onmouseover="this.style.borderColor='#25D366'" onmouseout="this.style.borderColor='var(--border)'">
+    <span style="font-size:22px; width:28px; text-align:center; color:#25D366; flex-shrink:0;"><i class="fa-brands fa-whatsapp"></i></span>
+    <div>
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:2px; color:var(--dim); text-transform:uppercase; margin-bottom:2px;">WhatsApp</div>
+        <div style="font-size:13px; color:var(--white); font-weight:600;">+{{ \App\Models\SiteSetting::get('gym_phone', '628XXXXXXXXXX') }}</div>
+    </div>
+</a>
 
             {{-- Instagram --}}
             <a class="contact-card" href="https://www.instagram.com/fitscape_fitness_studio?utm_source=ig_web_button_share_sheet&exln=ZDNlZDc0MzIxNw==/{{ \App\Models\SiteSetting::get('gym_instagram', 'fitscapestudio') }}" target="_blank"
